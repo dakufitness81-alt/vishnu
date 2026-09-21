@@ -1,0 +1,126 @@
+READ ME FIRST — 5 minute read, no coding needed
+===============================================
+
+What is this?
+  A program that makes short videos for you by itself:
+  it thinks of an idea, writes the script, makes a
+  25-second vertical video (TikTok / Shorts / Reels
+  style), and can post it to your accounts.
+
+
+YOUR DAILY BUTTONS
+------------------
+  Windows:  open the  FOR-WINDOWS  folder
+  Mac:      open the  FOR-MAC  folder
+
+  File you click once when you first start:
+      1-SETUP            (1 to 3 minutes, only first time)
+
+  After that, this is ALL you ever do:
+      2-MAKE-VIDEO       (double-click = new video made)
+
+  Useful extras:
+      3-MY-OWN-IDEA      (make a video from YOUR idea)
+      4-WHAT-DID-IT-MAKE (shows everything it has made)
+
+
+WHERE ARE MY VIDEOS?
+--------------------
+  In this folder, open:
+      output  >  posts  >  newest folder  >  video.mp4
+  Double-click video.mp4 to watch it.
+
+
+PUT YOUR NAME ON THE VIDEOS (2 minutes)
+---------------------------------------
+  1. In THIS folder, double-click the file  config.yaml
+     (it opens in Notepad / TextEdit)
+  2. Find this line:
+         handle: "@yourhandle"
+     Change it to your real handle, for example:
+         handle: "@dakufitness81"
+  3. (Optional) also change:
+         cta: "Follow for one tip like this every day."
+         hashtags: ["#fitness", "#dailytips"]
+  4. Save the file (Ctrl+S) and close.
+
+
+WHEN YOU WANT AUTOMATIC POSTING (later, optional)
+-------------------------------------------------
+  Right now every video is only SAVED on your computer —
+  you can email/upload it to TikTok or Instagram yourself,
+  or skip to auto-posting:
+
+  YouTube:
+    1. Follow the "YouTube steps" below
+    2. Double-click 5-CONNECT-YOUTUBE
+    3. In config.yaml change:
+           platforms: [local]
+       to:
+           platforms: [youtube]
+    4. From now on, 2-MAKE-VIDEO also posts to YouTube.
+
+  X (Twitter):
+    1. Follow the "X steps" below
+    2. Double-click 6-CONNECT-X
+    3. In config.yaml:  platforms: [x]
+
+
+YOUTUBE STEPS (one time, ~15 minutes, free)
+-------------------------------------------
+  1. Open  https://console.cloud.google.com  (use the
+     Google account that owns your channel)
+  2. Create a new Project (top-left)
+  3. Search "YouTube Data API v3"  ->  Enable
+  4. Left menu > APIs & Services > OAuth consent screen:
+     External -> App name "MyVideos" + your email -> Save
+     then add your own email under "Test users"
+  5. Left menu > APIs & Services > Credentials
+     -> + Create Credentials -> OAuth client ID
+     -> type "Desktop app" -> Create
+  6. A JSON file downloads. Rename it  client_secret.json
+     and put it in a NEW folder called  secrets  inside
+     the vishnu folder:   vishnu/secrets/client_secret.json
+  7. Double-click .env (opens in Notepad) and add this line
+     (change the path to your real vishnu location):
+         YOUTUBE_CLIENT_SECRET_JSON=C:\Users\YOU\vishnu\secrets\client_secret.json
+  8. Double-click  5-CONNECT-YOUTUBE
+     (approve in the browser, paste the code when asked)
+
+
+X (TWITTER) STEPS (one time, ~10 minutes)
+-----------------------------------------
+  1. Open  https://developer.x.com  -> sign in
+  2. Projects and Apps -> Create Project & App
+  3. In your app: Settings -> Redirect URIs, add
+         http://localhost:8080/callback
+  4. In "Keys and tokens" copy the Client ID and
+     Client Secret into the .env file:
+         X_CLIENT_ID=...
+         X_CLIENT_SECRET=...
+  5. Double-click  6-CONNECT-X
+
+
+IF SOMETHING GOES WRONG
+-----------------------
+  1. Read the last line on the screen — the program
+     always explains the problem in plain words.
+  2. Most often it is: Python not installed (see file
+     1-SETUP) or a value missing in .env (see steps above).
+  3. Still stuck? Take a photo of the screen and send it
+     to the person who set this up with you.
+
+
+COST
+----
+  Everything above is free.
+  Optional: adding an OpenAI AI key makes the videos
+  have a voice — costs about 1 cent per video.
+  (Ask for the steps only if you want it.)
+
+
+NEVER SHARE
+-----------
+  Do not share the  .env  file or the  secrets  folder
+  with anyone. They are like the passwords to your
+  accounts.
