@@ -1,0 +1,34 @@
+# ─── Vishnu AutoPilot configuration ─────────────────────────────────────────
+agent:
+  niche: fitness              # fitness | tech | finance | cooking | travel | general
+                              # (add your own bank in agent/ideas.py)
+  handle: "@yourhandle"       # shown on the videos; set to your real handle
+  platforms: [local]          # local | youtube | tiktok | x | facebook | instagram
+                              # local = dry-run: saves the post to output/published/
+  ideas_per_run: 3            # candidate ideas generated per run
+
+video:
+  width: 1080
+  height: 1920                # 9:16 vertical — ideal for Shorts / Reels / TikTok
+  fps: 30
+  crf: 20                     # lower = higher quality / bigger file
+  beats: 4                    # tip slides between the hook and the CTA
+  min_slide_seconds: 2.2
+  max_slide_seconds: 6.0
+  cta: "Follow for one tip like this every day."
+  hashtags: ["#fitness", "#dailytips"]
+
+voice:
+  provider: auto              # auto | openai | espeak | none
+  # auto = OpenAI TTS if a key is set, espeak-ng if installed, else silent
+  openai_model: tts-1
+  openai_voice: alloy         # alloy | echo | fable | onyx | nova | shimmer
+
+llm:
+  provider: auto              # auto | openai | none
+  # auto = uses an LLM for ideas+scripts when OPENAI_API_KEY/OPENROUTER_API_KEY
+  # is set; otherwise the free offline engine is used
+  model: gpt-4o-mini
+
+output:
+  dir: output
